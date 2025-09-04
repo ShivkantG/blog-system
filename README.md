@@ -79,19 +79,28 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 ## Installation
 1. Clone the repo:
    ```bash
-   git clone https://github.com/your-username/blog-system.git
+   https://github.com/ShivkantG/blog-system.git
    cd blog-system
 
 ## Installation dependencies:
 
-composer install
+## composer install
 - npm install && npm run dev
 
-Copy .env.example to .env and update database config.
+## Copy environment file:
+- Copy .env.example to .env and update database config.
+  DB_DATABASE=blog_system
+  DB_USERNAME=root
+  DB_PASSWORD=
 
 ## Import database:
 
 - mysql -u root -p blog_system < database/database_dump.sql
+
+## Database Schema (Overview)
+- users: stores user info (name, email, password, role, is_blocked)
+- posts: stores blog posts (title, content, user_id)
+- reactions: stores like/dislike on posts
 
 ## Run migrations & seeders:
 

@@ -22,7 +22,6 @@ Route::middleware('auth')->group(function () {
     // Single Post by Slug
     Route::get('/post/{slug}', [PostController::class, 'show'])->name('posts.show');
 
-    // Route::post('/posts/{post}/react', [PostController::class, 'react'])->name('posts.react');
     Route::post('/post/{id}/like', [PostController::class, 'like'])->name('posts.like');
     Route::post('/post/{id}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
 
