@@ -3,12 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\Reaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class PostController extends Controller
 {
+    public function welcome()
+    {
+        $posts = Post::latest()->limit(6)->get();
+
+        return view('welcome', compact('posts'));
+    }
+    public function dashboard()
+    {
+        $posts = Post::latest()->limit(6)->get();
+        //dd($posts);
+        return view('dashboard', compact('posts'));
+    }
+
+    public function blogs()
+    {
+        $posts = Post::latest()->get();
+        return view('blogs', compact('posts'));
+    }
     // Show all posts
     public function index()
     {

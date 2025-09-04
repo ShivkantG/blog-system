@@ -1,20 +1,18 @@
-@extends('layouts.app')
-@section('dashboard')
-    <div class="w-full flex flex-col gap-4 sm:gap-6">
-        <!-- Page Heading -->
-        <div class="bg-white shadow-md p-[18px]  flex justify-center items-center">
-            <h1 class="text-xl font-bold text-[#0d6a7c]">Dashboard Overview</h1>
-        </div>
+@extends('layouts.public')
 
-        <div class="w-full md:px-0 min-h-[200px] grid place-items-center sm:p-2">
+@section('public')
+    <div
+        class="w-full bg-gradient-to-r mt-[-4px] px-4 md:px-0 from-[#a2eff267] via-[#3ebfc136] to-[#91f0f25e] min-h-[200px] grid place-items-center sm:p-2 py-6 sm:py-10">
+        <!-- Post List -->
+        <div class="w-full px-4 md:px-0 min-h-[200px] grid place-items-center sm:p-2 py-6 sm:py-10 md:py-16">
             <!-- Post List -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-7xl">
                 @forelse ($posts as $post)
                     <!-- Blog Card -->
                     <div
-                        class="p-5 bg-white border shadow-md flex flex-col transition-all duration-300 hover:shadow-lg">
+                        class="p-5 bg-white border rounded-lg shadow-md flex flex-col transition-all duration-300 hover:shadow-lg">
                         <!-- Image Section -->
-                        <div class="w-full h-48 overflow-hidden">
+                        <div class="w-full h-48 overflow-hidden rounded-md">
                             @if($post->image)
                                 <img src="{{ asset('storage/' . $post->image) }}"
                                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
@@ -42,7 +40,7 @@
                                     <span>{{ $post->created_at->diffForHumans() }}</span>
                                 </div>
                                 <a href="{{ route('posts.show', $post->slug) }}"
-                                    class="px-3 py-1 bg-indigo-500 text-white text-xs sm:text-sm hover:bg-indigo-600 transition">
+                                    class="px-3 py-1 bg-indigo-500 text-white rounded-lg text-xs sm:text-sm hover:bg-indigo-600 transition">
                                     Read More
                                 </a>
                             </div>
@@ -66,33 +64,15 @@
                                     <p class="text-xs text-gray-400">You cannot react on your own post</p>
                                 @endif
                             </div>
-
-                            <!-- Edit/Delete Buttons -->
-                            @if($post->user_id == auth()->id())
-                                <div class="flex gap-3 mt-4">
-                                    <button onclick="location.href='{{ route('posts.edit', $post) }}'"
-                                        class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 text-sm">
-                                        Edit
-                                    </button>
-                                    <form id="delete-form-{{ $post->id }}" action="{{ route('posts.destroy', $post) }}"
-                                        method="POST">
-                                        @csrf @method('DELETE')
-                                        <button type="button" onclick="confirmDelete({{ $post->id }})"
-                                            class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 text-sm">
-                                            Delete
-                                        </button>
-                                    </form>
-                                </div>
-                            @endif
                         </div>
                     </div>
                 @empty
                     <!-- Static Fallback Cards -->
                     @foreach(range(1, 3) as $i)
                         <div
-                            class="p-5 bg-white border shadow-md flex flex-col transition-all duration-300 hover:shadow-lg">
+                            class="p-5 bg-white border rounded-lg shadow-md flex flex-col transition-all duration-300 hover:shadow-lg">
                             <!-- Image Section -->
-                            <div class="w-full h-48 overflow-hidden">
+                            <div class="w-full h-48 overflow-hidden rounded-md">
                                 <img src="https://st3.depositphotos.com/3591429/13269/i/450/depositphotos_132694218-stock-photo-woman-writing-notes-in-diary.jpg"
                                     class="w-full h-full object-cover transition-transform duration-300 hover:scale-105">
                             </div>
@@ -116,7 +96,7 @@
                                         <span>Just now</span>
                                     </div>
                                     <a href="#"
-                                        class="px-3 py-1 bg-indigo-500 text-white text-xs sm:text-sm hover:bg-indigo-600 transition">
+                                        class="px-3 py-1 bg-indigo-500 text-white rounded-lg text-xs sm:text-sm hover:bg-indigo-600 transition">
                                         Read More
                                     </a>
                                 </div>
@@ -126,7 +106,45 @@
                 @endforelse
             </div>
         </div>
-
-
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#0d6a7c] text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
+
+                <!-- About -->
+                <div>
+                    <h2 class="text-lg font-semibold mb-3">About</h2>
+                    <p class="text-sm text-gray-200">
+                        Blog Management System helps you create, publish, and manage blogs with ease.
+                        A platform for writers, editors, and readers.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h2 class="text-lg font-semibold mb-3">Quick Links</h2>
+                    <ul class="space-y-2">
+                        <li><a href="/blogs" class="hover:underline">Explore Blogs</a></li>
+                        <li><a href="/login" class="hover:underline">Login</a></li>
+                        <li><a href="/register" class="hover:underline">Register</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h2 class="text-lg font-semibold mb-3">Contact</h2>
+                    <p class="text-sm"> New Delhi, India</p>
+                    <p class="text-sm"> contact@blogms.com</p>
+                    <p class="text-sm"> +91 9876543210</p>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="border-t border-gray-500 mt-6 pt-4 text-center text-sm text-gray-200">
+                © {{ date('Y') }} Blog Management System. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
 @endsection

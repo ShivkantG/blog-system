@@ -40,7 +40,7 @@
                     <textarea name="content" placeholder="Write your post..."
                         class="w-full px-4 py-2 border rounded-lg h-32 focus:ring-2 focus:ring-[#0d6a7c] outline-none"
                         required>
-                                                        </textarea>
+                                                                </textarea>
                     <button type="submit"
                         class="px-6 py-3 bg-[#0d6a7c] text-white text-lg rounded-lg hover:shadow-md transition-all duration-200 ease-in-out font-semibold self-start">
                         Add Post

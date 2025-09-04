@@ -23,7 +23,7 @@
             <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
 
             <!-- ✅ Load jQuery First -->
-            <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+            {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> --}}
 
 
             <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
@@ -36,17 +36,17 @@
             <div class="w-screen h-svh fixed top-0 left-0 z-50 flex">
                 <!-- Sidebar -->
                 <div id="dashboard_menu"
-                    class="w-[300px] ms-[-300px] fixed top-0 left-0 lg:static lg:ms-0 transition-all duration-200 ease-linear min-w-[300px] h-svh bg-white dark:bg-[#0d6a7c] shadow-md z-10">
+                    class="w-[300px] ms-[-300px] fixed top-0 left-0 lg:static lg:ms-0 transition-all duration-200 ease-linear min-w-[300px] h-svh bg-white shadow-md z-10">
                     <div class="flex items-center h-[72px] min-h-[72px] px-4 py-2">
                         <div id="dashboard_toggle_btn2"
-                            class="w-[40px] h-[40px] lg:hidden rounded-full grid place-items-center bg-[#ebf2f9] dark:bg-[#00252c] cursor-pointer text-xl text-gray-800 dark:text-slate-300">
-                            <i class="fa-solid fa-xmark"></i>
+                            class="w-[40px] min-w-[40px] h-[40px] lg:hidden rounded-full grid place-items-center bg-[#ebf2f9] cursor-pointer text-xl text-gray-800 dark:text-slate-300">
+                            <i class="text-black fa-solid fa-xmark"></i>
                         </div>
                         <a href="/" class="flex w-full">
-
-                            <div class="w-full h-full px-4">
-                                <img class="w-full h-[60px] logo rounded" src="{{ asset('images/') }}" alt="blog logo">
-                            </div>
+                            <p
+                                class="text-center font-[900] text-2xl m-auto dark:text-gray-700 tracking-wide uppercase">
+                                BlogSys
+                            </p>
                         </a>
                     </div>
                     <div class="h-[calc(100vh-72px)] overflow-y-auto p-4 sm:py-6">
@@ -54,7 +54,7 @@
                             <!-- Dashboard -->
                             <li>
                                 <a href="{{ route('dashboard') }}"
-                                    class="{{ request()->is('dashboard') ? 'bg-gray-100 dark:bg-[#16454e]' : '' }} w-full flex gap-2 items-center px-1.5 text-base dark:text-slate-300 dark:hover:bg-[#00252c] no-underline transition-all duration-300 ease-in-out hover:bg-[#0d6a7c] hover:text-white">
+                                    class="{{ request()->is('dashboard') ? 'bg-gray-100' : '' }} w-full flex gap-2 items-center px-1.5 text-base no-underline transition-all duration-300 ease-in-out hover:bg-[#0d6a7c] hover:text-white">
                                     <div
                                         class="w-[40px] h-[40px] rounded-md grid place-items-center transition-all duration-300 ease-in-out">
                                         <i class="fa-solid fa-grid-2"></i>
@@ -63,23 +63,25 @@
                                 </a>
                             </li>
 
-                            <li class="uppercase font-bold text-gray-500 dark:text-white">
+                            <li class="uppercase font-bold text-gray-900">
                                 Manage Blog
                             </li>
-                            <li>
-                                <a href="{{ route('posts.index') }}"
-                                    class="{{ request()->is(['create_post*']) ? 'bg-gray-100 dark:bg-[#16454e]' : '' }} w-full flex gap-2 items-center px-1.5 text-base dark:text-slate-300 dark:hover:bg-[#00252c] no-underline transition-all duration-300 ease-in-out hover:bg-[#0d6a7c] hover:text-white">
-                                    <div
-                                        class="w-[40px] h-[40px] rounded-md grid place-items-center transition-all duration-300 ease-in-out">
-                                        <i class="fa-solid fa-money-check-dollar-pen"></i>
-                                    </div>
-                                    <span class="transition-all duration-300 ease-in-out">Create Post</span>
-                                </a>
-                            </li>
+                            @if (Auth::check() && !Auth::user()->is_admin)
+                                <li>
+                                    <a href="{{ route('posts.index') }}"
+                                        class="{{ request()->is(['posts*']) ? 'bg-gray-100' : '' }} w-full flex gap-2 items-center px-1.5 text-base no-underline transition-all duration-300 ease-in-out hover:bg-[#0d6a7c] hover:text-white">
+                                        <div
+                                            class="w-[40px] h-[40px] rounded-md grid place-items-center transition-all duration-300 ease-in-out">
+                                            <i class="fa-solid fa-money-check-dollar-pen"></i>
+                                        </div>
+                                        <span class="transition-all duration-300 ease-in-out">Create Post</span>
+                                    </a>
+                                </li>
+                            @endif
                             @if (Auth::check() && Auth::user()->is_admin)
                                 <li>
                                     <a href="{{ route('admin.users') }}"
-                                        class="{{ request()->is('admin/users*') ? 'bg-gray-100 dark:bg-[#16454e]' : '' }} w-full flex gap-2 items-center px-1.5">
+                                        class="{{ request()->is('admin/user*') ? 'bg-gray-100' : '' }} w-full flex gap-2 items-center px-1.5 text-base no-underline transition-all duration-300 ease-in-out hover:bg-[#0d6a7c] hover:text-white">
                                         <div class="w-[40px] h-[40px] rounded-md grid place-items-center">
                                             <i class="fa-solid fa-users"></i>
                                         </div>
@@ -89,7 +91,7 @@
 
                                 <li>
                                     <a href="{{ route('admin.posts') }}"
-                                        class="{{ request()->is('admin/posts*') ? 'bg-gray-100 dark:bg-[#16454e]' : '' }} w-full flex gap-2 items-center px-1.5">
+                                        class="{{ request()->is('admin/posts*') ? 'bg-gray-100' : '' }} w-full flex gap-2 items-center px-1.5 text-base no-underline transition-all duration-300 ease-in-out hover:bg-[#0d6a7c] hover:text-white">
                                         <div class="w-[40px] h-[40px] rounded-md grid place-items-center">
                                             <i class="fa-solid fa-pen-to-square"></i>
                                         </div>
@@ -99,7 +101,7 @@
                             @endif
                             <li>
                                 <a href="{{ route('logout') }}" onclick="confirmLogout(event);"
-                                    class="{{ request()->is('logout') ? 'bg-gray-100 dark:bg-[#16454e]' : '' }} w-full flex gap-2 items-center px-1.5 text-base dark:text-slate-300 dark:hover:bg-[#00252c] no-underline transition-all duration-300 ease-in-out hover:bg-[#0d6a7c] hover:text-white">
+                                    class="{{ request()->is('logout') ? 'bg-gray-100' : '' }} w-full flex gap-2 items-center px-1.5 text-base no-underline transition-all duration-300 ease-in-out hover:bg-[#0d6a7c] hover:text-white">
                                     <div
                                         class="w-[40px] h-[40px] rounded-md grid place-items-center transition-all duration-300 ease-in-out">
                                         <i class="fa-solid text-base fa-right-from-bracket"></i>
@@ -114,12 +116,11 @@
 
                 <!-- Nav bar -->
                 <div class="flex-1 overflow-auto  bg-[#fff]">
-                    <div
-                        class="flex justify-between items-center bg-white dark:bg-[#0d6a7c] p-4 sm:px-6 shadow-sm h-[72px]">
+                    <div class="flex justify-between items-center bg-white p-4 sm:px-6 shadow-sm h-[72px]">
                         <div>
                             <div id="dashboard_toggle_btn"
-                                class="w-[40px] h-[40px] rounded-full grid place-items-center bg-[#ebf2f9] dark:bg-[#00252c] cursor-pointer text-xl text-gray-800 dark:text-slate-300">
-                                <i class="fa-solid fa-bars"></i>
+                                class="w-[40px] h-[40px] rounded-full grid place-items-center bg-[#ebf2f9] cursor-pointer text-xl text-gray-800 dark:text-slate-300">
+                                <i class="text-black fa-solid fa-bars"></i>
                             </div>
                         </div>
                         <div>
@@ -137,12 +138,12 @@
                                     @endif
                                 @else
                                     {{-- <li class="flex justify-center items-center">
-                                                                                        <div id="night_mode"
-                                                                                            class="w-[40px] h-[40px] rounded-full grid place-items-center bg-[#ebf2f9] dark:bg-[#00252c] cursor-pointer text-xl text-gray-800 dark:text-slate-300">
-                                                                                            <i id="moon_icon" class="fa-solid fa-moon "></i>
-                                                                                            <i id="sun_icon" class="fa-solid fa-sun hidden"></i>
-                                                                                        </div>
-                                                                  </li> --}}
+                                            <div id="night_mode"
+                                                class="w-[40px] h-[40px] rounded-full grid place-items-center bg-[#ebf2f9] cursor-pointer text-xl text-gray-800 dark:text-slate-300">
+                                                <i id="moon_icon" class="fa-solid fa-moon "></i>
+                                                <i id="sun_icon" class="fa-solid fa-sun hidden"></i>
+                                            </div>
+                                        </li> --}}
 
                                     <li class="relative">
                                         <div id="user_drop_down" class="flex items-center !gap-1 cursor-pointer">
@@ -157,7 +158,7 @@
                                             </div>
                                         </div>
                                         <div id="user_drop_down_menu"
-                                            class="absolute overflow-hidden max-h-0 top-[120%] right-0 bg-white dark:bg-gray-800 rounded-lg border-[#a2f0f2] shadow-xl w-full min-w-[180px] transition-all duration-300 ease-in-out z-50">
+                                            class="absolute overflow-hidden max-h-0 top-[120%] right-0 bg-whiterounded-lg border-[#a2f0f2] shadow-xl w-full min-w-[180px] transition-all duration-300 ease-in-out z-50">
                                             <ul class="flex flex-col divide-y-2 divide-[#a2f0f2] dark:divide-slate-700">
                                                 <li>
                                                     <a href="{{ route('dashboard') }}"

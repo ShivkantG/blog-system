@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('dashboard')
-    <div class="p-6 bg-white rounded-lg shadow-md">
+    <div class="p-6 bg-white shadow-md">
         <h2 class="text-2xl font-semibold mb-4">Users List</h2>
 
         <table class="w-full border">

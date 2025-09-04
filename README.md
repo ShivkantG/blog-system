@@ -104,7 +104,11 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Run migrations & seeders:
 
+- php artisan key:generate
 - php artisan migrate --seed
+- php artisan storage:link
+
+
 
 ## Start local server:
 
