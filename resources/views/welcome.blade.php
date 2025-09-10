@@ -61,7 +61,7 @@
                                 <span>•</span>
                                 <span>{{ $post->created_at->diffForHumans() }}</span>
                             </div>
-                            <a href="{{ route('posts.show', $post->slug) }}"
+                            <a href="{{ route('posts.slug', $post->slug) }}"
                                 class="px-3 py-1 bg-indigo-500 text-white rounded-lg text-xs sm:text-sm hover:bg-indigo-600 transition">
                                 Read More
                             </a>

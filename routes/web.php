@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     // Posts routes
     Route::resource('posts', PostController::class);
     // Single Post by Slug
-    Route::get('/post/{slug}', [PostController::class, 'show'])->name('posts.show');
+    Route::get('/post/{slug}', [PostController::class, 'show'])->name('posts.slug');
 
     Route::post('/post/{id}/like', [PostController::class, 'like'])->name('posts.like');
     Route::post('/post/{id}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');

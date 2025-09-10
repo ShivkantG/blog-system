@@ -59,7 +59,7 @@
                             <img src="{{ asset('storage/' . $post->image) }}" class="mt-3 rounded-lg shadow max-h-60 object-cover">
                         @endif
                         <div class="flex items-center justify-between mt-4">
-                            <a href="{{ route('posts.show', $post->slug) }}"
+                            <a href="{{ route('posts.slug', $post->slug) }}"
                                 class="px-3 py-1 bg-indigo-500 text-white rounded hover:bg-indigo-600">
                                 Read More
                             </a>
