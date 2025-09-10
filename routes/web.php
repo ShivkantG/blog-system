@@ -24,7 +24,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/post/{id}/like', [PostController::class, 'like'])->name('posts.like');
     Route::post('/post/{id}/dislike', [PostController::class, 'dislike'])->name('posts.dislike');
-
+    
     
     Route::middleware(['auth', 'is_admin'])->prefix('admin')->group(function () {
         Route::get('/users', [AdminController::class, 'users'])->name('admin.users');

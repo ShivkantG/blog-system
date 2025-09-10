@@ -17,7 +17,7 @@
         @endif
 
         <form method="POST" action="{{ route('register') }}"
-            class="max-w-[600px] w-full m-auto border-[16px] border-[#91f0f2] bg-[#0d6a7c] p-4 md:p-8 shadow-md">
+            class="max-w-[600px] w-full m-auto border-[5px] border-[#91f0f2] bg-[#0d6a7c] p-4 md:p-8 shadow-md">
             @csrf
 
             <div class="flex flex-col gap-4 py-4">
@@ -37,7 +37,7 @@
                 </div>
                 @error('name')
                     <span class="text-red-500 text-sm">{{ $message }}</span>
-                @enderror
+                @enderror   
             </div>
 
             <!-- Email -->

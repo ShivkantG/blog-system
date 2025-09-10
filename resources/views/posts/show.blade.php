@@ -2,10 +2,10 @@
 
 @section('public')
     <!-- Blog Show Page -->
-    <div class="max-w-6xl mx-auto md:p-10 rounded-md px-4 mt-6">
+    <div class="max-w-6xl mx-auto md:p-10 rounded-md px-4 mt-6 bg-gradient-to-r from-[#a2f0f2] via-[#3ebfc1] to-[#91f0f2]">
 
         <div class="flex flex-col md:flex-row gap-8 items-start">
-            
+
             <!-- Post Image (Left Side on Desktop, Top on Mobile) -->
             @if($post->image)
                 <div class="w-full md:max-w-4xl">

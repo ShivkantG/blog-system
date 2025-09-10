@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('dashboard')
-    <div class="w-full flex flex-col gap-4 sm:gap-6">
+    <div class="w-full flex flex-col gap-4 sm:gap-6 "> 
         <!-- Page Heading -->
         <div class="bg-white shadow-md p-[18px]  flex justify-center items-center">
             <h1 class="text-xl font-bold text-[#0d6a7c]">Posts List</h1>
@@ -18,7 +18,7 @@
                 </button>
             </div>
         @endif
-        <div class="p-6 bg-white shadow-md">
+        <div class="p-6 bg-white shadow-md ">
 
             <table class="w-full border">
                 <thead>

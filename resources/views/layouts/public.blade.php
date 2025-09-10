@@ -70,7 +70,8 @@
                             <!-- Home -->
                             <li>
                                 <a href="{{ url('/') }}"
-                                    class="{{ request()->is('/') ? '' : '' }} w-full flex gap-2 items-center py-2 px-3 text-base sm:text-lg no-underline transition-all duration-300 ease-in-out hover:text-[#16454e] hover:font-bold hover:bg-[#0d6a7c] hover:text-white lg:hover:text-black lg:bg-transparent lg:hover:bg-transparent ">
+                                    class="{{ request()->is('/') ? '' : '' }} w-full flex gap-2 items-center py-2 px-3 text-base sm:text-lg no-underline transition-all duration-300 ease-in-out hover:text-[#16454e]
+                                     hover:font-bold hover:bg-[#0d6a7c] hover:text-white lg:hover:text-black lg:bg-transparent lg:hover:bg-transparent ">
                                     <div class="w-[40px] h-[40px] rounded-md grid place-items-center lg:hidden">
                                         <i class="fa-solid fa-house"></i>
                                     </div>

@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('dashboard')
-    <div class="p-6 bg-white shadow-md">
+    <div class="p-6 bg-white shadow-md ">
         <h2 class="text-2xl font-semibold mb-4">Users List</h2>
 
-        <table class="w-full border">
+        <table class="w-full border ">
             <thead>
                 <tr class="bg-gray-200 text-left">
                     <th class="px-3 py-2 border">ID</th>

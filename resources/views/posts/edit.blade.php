@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('dashboard')
 
-    <div class="w-full flex flex-col gap-4 sm:gap-6">
+    <div class="w-full flex flex-col gap-4 sm:gap-6 bg-gradient-to-r from-[#a2f0f2] via-[#3ebfc1] to-[#91f0f2]">
         <!-- Blog Section -->
         <div class="bg-white shadow-md p-[18px] flex justify-center items-center">
             <h1 class="text-xl font-bold text-[#0d6a7c]">

@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('dashboard')
 
-    <div class="w-full flex flex-col gap-6">
+    <div class="w-full m-0 flex flex-col gap-6">
         <!-- Blog Section -->
         <div
-            class="bg-white shadow-md p-6 md:p-10 rounded-md min-h-[calc(100vh-73px)] flex flex-col transition-all duration-300">
+            class="bg-gradient-to-r from-[#a2f0f2] via-[#3ebfc1] to-[#91f0f2] shadow-md    md:p-2 rounded-md min-h-[calc(100vh-73px)] flex flex-col transition-all duration-300">
 
             <!-- Header -->
-            <h1 class="text-3xl md:text-4xl font-bold text-[#0d6a7c] mb-6 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold text-[#0d6a7c] mb-2 text-center">
                 Blog Management
             </h1>
 
