@@ -94,8 +94,8 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
   DB_PASSWORD=
 
 ## Import database:
-
-- mysql -u root -p blog_system < database/database_dump.sql
+- cp .env.example .env
+- mysql -u root -p blog_system < database/blog_system.sql
 
 ## Database Schema (Overview)
 - users: stores user info (name, email, password, role, is_blocked)
