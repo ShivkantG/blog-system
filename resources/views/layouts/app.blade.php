@@ -22,10 +22,6 @@
                 crossorigin="anonymous" referrerpolicy="no-referrer" />
             <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
 
-            <!-- ✅ Load jQuery First -->
-            {{-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> --}}
-
-
             <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
             <!-- Scripts -->
@@ -33,9 +29,10 @@
         </head>
 
         <body>
-            <div class="w-screen h-svh fixed top-0 left-0 z-50 flex">
+            <div class="w-screen h-svh fixed top-0 left-0 z-50 flex bg-blue-200">
                 <!-- Sidebar -->
-                <div id="dashboard_menu" class="w-[300px] ms-[-300px] fixed top-0 left-0
+                <div id="dashboard_menu"
+                    class="w-[300px] ms-[-300px] fixed top-0 left-0
                  lg:static lg:ms-0 transition-all duration-200 ease-linear min-w-[300px] h-svh bg-white shadow-md z-10">
                     <div class="flex items-center h-[72px] min-h-[72px] px-4 py-2">
                         <div id="dashboard_toggle_btn2"
@@ -52,17 +49,16 @@
                     <div class="h-[calc(100vh-72px)] overflow-y-auto p-4 sm:py-6">
                         <ul class="flex flex-col gap-2 w-full m-0 p-0">
                             <!-- Dashboard -->
-                                <li>
-                                    <a href="{{ route('dashboard') }}"
-                                        class="{{ request()->is('dashboard') ? 'bg-gray-100' : '' }} w-full flex gap-2 items-center px-1.5 text-base no-underline transition-all 
+                            <li>
+                                <a href="{{ route('dashboard') }}" class="{{ request()->is('dashboard') ? 'bg-gray-100' : '' }} w-full flex gap-2 items-center px-1.5 text-base no-underline transition-all 
                                         duration-300 ease-in-out hover:bg-[#0d6a7c] hover:text-white">
-                                        <div
-                                            class="w-[40px] h-[40px] rounded-md grid place-items-center transition-all duration-300 ease-in-out">
-                                            <i class="fa-solid fa-grid-2"></i>
-                                        </div>
-                                        <span class="transition-all duration-300 ease-in-out">Dashboard</span>
-                                    </a>
-                                </li>
+                                    <div
+                                        class="w-[40px] h-[40px] rounded-md grid place-items-center transition-all duration-300 ease-in-out">
+                                        <i class="fa-solid fa-grid-2"></i>
+                                    </div>
+                                    <span class="transition-all duration-300 ease-in-out">Dashboard</span>
+                                </a>
+                            </li>
 
                             <li class="uppercase font-bold text-gray-900">
                                 Manage Blog
@@ -78,7 +74,7 @@
                                         <span class="transition-all duration-300 ease-in-out">Manage Post</span>
                                     </a>
                                 </li>
-                               
+
                             @endif
                             @if (Auth::check() && Auth::user()->is_admin)
                                 <li>
@@ -117,7 +113,7 @@
                 </div>
 
                 <!-- Nav bar -->
-                <div class="flex-1 overflow-auto  bg-[#fff]">
+                <div class="flex-1 overflow-auto ">
                     <div class="flex justify-between items-center bg-white p-4 sm:px-6 shadow-sm h-[72px]">
                         <div>
                             <div id="dashboard_toggle_btn"
@@ -126,7 +122,7 @@
                             </div>
                         </div>
                         <div>
-                            <ul id="menu" class="flex flex-row w-fit gap-2 sm:gap-4">
+                            <ul id="menu" class="flex flex-row w-fit gap-2 sm:gap-4 ">
                                 @guest
                                     @if (Route::has('login'))
                                         <li class="flex md:block">
@@ -139,14 +135,6 @@
                                         </li>
                                     @endif
                                 @else
-                                    {{-- <li class="flex justify-center items-center">
-                                                <div id="night_mode"
-                                                    class="w-[40px] h-[40px] rounded-full grid place-items-center bg-[#ebf2f9] cursor-pointer text-xl text-gray-800 dark:text-slate-300">
-                                                    <i id="moon_icon" class="fa-solid fa-moon "></i>
-                                                    <i id="sun_icon" class="fa-solid fa-sun hidden"></i>
-                                                </div>
-                                            </li> --}}
-
                                     <li class="relative">
                                         <div id="user_drop_down" class="flex items-center !gap-1 cursor-pointer">
                                             <button type="button" id="userDropdown"

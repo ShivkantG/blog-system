@@ -88,25 +88,24 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 - npm install && npm run dev
 
 ## Copy environment file:
-- Copy .env.example to .env and update database config.
+- Copy .env.example to .env and update database env file
   DB_DATABASE=blog_system
   DB_USERNAME=root
   DB_PASSWORD=
 
-## Import database:
-- cp .env.example .env
-- mysql -u root -p blog_system < database/blog_system.sql
+
+## Run migrations & seeders:
+- cp .env.example .env 
+- php artisan migrate --seed
+- php artisan key:generate
+- php artisan storage:link
+
 
 ## Database Schema (Overview)
 - users: stores user info (name, email, password, role, is_blocked)
 - posts: stores blog posts (title, content, user_id)
 - reactions: stores like/dislike on posts
 
-## Run migrations & seeders:
-
-- php artisan key:generate
-- php artisan migrate --seed
-- php artisan storage:link
 
 
 
